@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.exitoso {
+    background-color: lime;
+}
+.PGX_Close.exitoso {
+    background-color: rgb(0, 209, 0);
+}
+
+.PGX_Close.alerta {
+    background-color: #ddce00;
+}
+
+.alerta {
+    background-color: #ffee00;
+}
+
+.PGX_Close.interrogacion {
+    background-color: #00bfd8;
+}
+
+.interrogacion {
+    background-color: #00e1ff;
+}
+
+.PGX_Close.error {
+    background-color: rgb(206, 0, 0);
+}
+
+.error {
+    background-color: red;
+}
+
+.default {
+    background-color: #000;
+}
+
+.Notificacion_Pgx {
+    overflow: hidden;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    width: 320px;
+    font-size: 20px;
+    height: 60px;
+    position: fixed;
+    transition: 2s;
+    z-index: 100000;
+}
+
+.ab {
+    transform: translate(1200px);
+}
+
+.icon_mensaje {
+    color: rgba(0, 0, 0, 0.466);
+    line-height: 65px;
+    float: left;
+    width: 50px;
+    height: 100%;
+    text-align: center;
+}
+
+.mensaje {
+    position: relative;
+    display: block;
+    margin-left: 45px;
+    margin-top: 10px;
+}
+
+.mensaje h1 {
+    font-size: 20px;
+}
+
+.mensaje p {
+    font-size: 16px;
+}
+
+.PGX_Close {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    position: absolute;
+    font-size: 40px;
+    /*background: rgb(0, 230, 0);*/
+    width: 40px;
+    line-height: 60px;
+    height: 100%;
+    font-weight: bold;
+    top: 0;
+    right: 0%;
+    color: #fff;
+}

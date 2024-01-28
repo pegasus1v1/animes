@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./assent/css/font-awesome.css">
+    <link rel="stylesheet" href="./assent/css/fontawesome-all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+
+    <link rel="stylesheet" href="./assent/css/style.css">
+    <link rel="stylesheet" href="./assent/css/base.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assent/js/pas.min.js"></script>
+    <link rel="stylesheet" href="./assent/css/notificaiones.css">
+    <script type="module" src="./assent/js/auth.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="overlay">
+        <h1>Registrate Para Acceder</h1>
+        <div id="loader">
+            <div class="loader-circle"></div>
+        </div>
+        <div class="btns">
+            <button type="button" class="googleLogin" id="googleLogin">Login with Google</button>
+            <p id="espera"></p>
+        </div>
+    </div>
+    <!-- <div id="password"></div> -->
+    <div class="main">
+        <span class="climas" id="climas"><i class="fa fa-sun"></i> Clima <i class="fa fa-snowflake"></i></span>
+        <div class="tiempo" id="tiempo">
+            <div class="general-information">
+                <div class="city" id="city"></div>
+                <div class="temperature">
+                    <i id="temp-img" class="fas fa-3x"></i>
+                    <div class="temp" id="temp"></div>
+                </div>
+            </div>
+            <div class="sg-information">
+                <div class="date" id="date"></div>
+                <div class="weather" id="weather"></div>
+            </div>
+        </div>
+        <div class="bar" id="bar">
+            <button class="bars" id="bars" onclick="abrirBara()"><i class="fa fa-bars"></i></button>
+            <button class="closes" id="closes" onclick="CerrarBarra()"><i class="fa fa-times"></i></button>
+            <div class="btns">
+                <button class="bar_btn" id=""><i class="fa fa-table"></i><span class="sub">Tablas</span></button>
+                <button class="bar_btn" id=""><i class="fas fa-comment-dots"></i><span class="sub grande">Trabajo En Equipo</span></button>
+                <button class="bar_btn" id="changeBackgroundBtn"><i class="fa fa-file"></i><span class="sub">Background</span></button>
+                <button class="bar_btn"><i class="fa fa-clock"></i><span class="sub">Alarmas</span></button>
+                <button class="bar_btn"><i class="fa fa-sticky-note"></i><span class="sub">Notas</span></button>
+                <button class="bar_btn" onclick="modalNotificacion();"><i class="fa fa-bell"></i><span class="sub">Notificaciones</span></button>
+                <button class="bar_btn a-setingt" onclick="modal_abrir_controlador_almacenador();"><i class="fa fa-cog"></i><span class="sub"> Settings </span></button>
+
+            </div>
+            <div class="users">
+                <div class="setingt" id="setingt">
+                    <button class="clear_data_base" onclick="BorrarTodo()"><i class="fa fa-trash"></i> Borrar Todo</button>
+                    <button class="salir hidden"id="logout" ><i class="fa fa-sign-out-alt"></i> Salir</button>
+                </div>
+                <div id="infor">
+                    <div class="informacion">
+                        <input class="texto-generado" id="texto-generado">
+                        <input type="text" class="texto-Gmail" id="texto-Gmail">
+                    </div>
+                    <img src="" id="img-user" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="controlador_almacenador">
+            <span class="close" onclick="modal_cerrar_controlador_almacenador()"><i class="fa fa-times"></i></span>
+            <select name="" id="Server">
+                <option value="" disabled selected> Selecione Una Tipo De Guardado </option>
+                <option value="Local_Store">Local Store</option>
+                <option value="Server_Online">Server Online</option>
+            </select>
+            <div class="instruccion" id="online">
+                <h1>Instrucciones</h1>
+                <p>Para guardar los datos en el servidor online, es necesario que el servidor este en linea.</p>
+                <figure class="paso">
+                    <img src="./assent/img/paso1.PNG" alt="">
+                    <span class="portador">1</span>
+                    <div class="paso_text">
+                        <h1> Crear Una Hoja De Calculo </h1>
+                        <p>solo es presionar en icono de mas</p>
+                        <a href="#" class="ir_paso">Ir</a>
+                    </div>
+                </figure>
+                <figure class="paso">
+                    <img src="./assent/img/paso1.PNG" alt="">
+                    <span class="portador">2</span>
+                    <div class="paso_text">
+                        <h1> Crear Una Hoja De Calculo </h1>
+                        <p>solo es presionar en icono de mas</p>
+                        <a href="#" class="ir_paso">Ir</a>
+                    </div>
+                </figure>
+
+            </div>
+        </div>
+
+        <div id="modal_background" class="modal">
+            <div class="modal-content">
+                <span class="close" id="close_background"><i class="fa fa-times"></i></span>
+                <h1 class="titulo">Canbiar Img</h1>
+                <input type="file" id="backgroundInput" accept="image/*">
+            </div>
+        </div>
+
+        <div class="tableros" style="display: none;">
+            <div class="buscador">
+                <select name="" id="TipoDeRed">
+                    <!-- <option value="">Selec</option> -->
+                    <option value="google">Google</option>
+                    <option value="youtube">Youtube</option>
+                    <option value="Tokio">Tokio</option>
+                </select>
+                <input type="text" id="Nombre_buscado" onkeydown="checkEnter(event)">
+                <button class="buscar" id="buscar" onclick="buscar()">Buscar</button>
+            </div>
+            <div class="contenedor-tableros">
+                <div class="tablero" id="tab1">
+                    <span onclick="dalte1()"><i class="fa fa-trash"></i></span>
+                    <h1>Uso Diario</h1>
+                    <div class="btns_links" id="btns_links">
+                        <a href="" class="links"></a>
+                    </div>
+                    <button id="agregar_links1"> Agregar</button>
+                </div>
+
+                <div class="tablero" id="tab2">
+                    <span onclick="dalte2()"><i class="fa fa-trash"></i></span>
+                    <h1>Programas</h1>
+                    <div class="btns_links" id="btns_links">
+                        <a href="" class="links"></a>
+                    </div>
+                    <button id="agregar_links2"> Agregar</button>
+                </div>
+
+                <div class="tablero" id="tab3">
+                    <span onclick="dalte3()"><i class="fa fa-trash"></i></span>
+                    <h1>Servidores</h1>
+                    <div class="btns_links" id="btns_links">
+                        <a href="" class="links"></a>
+                    </div>
+                    <button id="agregar_links3"> Agregar</button>
+                </div>
+
+                <div class="modal" id="modal">
+                    <span class="close" id="close_modal"> <i class="fa fa-times"></i></span>
+                    <h1>Agregador De Btns Links</h1>
+                    <select name="" id="selec_tableros">
+                        <option value="" disabled selected>Selecione El tablero</option>
+                        <option value="tab1">Uso Diario</option>
+                        <option value="tab2">Programas</option>
+                        <option value="tab3">Otros</option>
+                    </select>
+
+                    <label for="">Ponga El Nombre Al Btn:</label>
+                    <input type="text" id="Nombre">
+
+                    <label for="">Ponga El Link Del Btn:</label>
+                    <input type="text" id="Url">
+                    <button onclick="mostrarFavicon()">Mostrar Favicon</button>
+                    <br>
+                    <input type="text" id="faviconInput" readonly>
+
+                    <label for="">Eliga El Color Del Btn:</label>
+                    <input type="color" class="color" id="color">
+
+                    <label for="">Eliga El Fondo Del Btn:</label>
+                    <input type="color" class="color" id="colorBtnBac">
+                    <button id="Agregar"> Agregar Btn</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-Notificaciones" id="modal-Notificaciones">
+        <span class="close" onclick="modalNotificacionX()">&times;</span>
+        <div class="titulo-modal">
+            <h1>Notificaciones</h1>
+        </div>
+        <form id="formulario-publicacion" style="display: none;">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+        
+            <label for="contenido">Contenido:</label>
+            <textarea id="contenido" name="contenido" required></textarea>
+        
+            <button type="submit">Publicar</button>
+        </form>
+        <div id="mensajes-container ">
+            <div class="posts"></div>
+        </div>
+
+    </div>
+
+
+    
+    <script src="./assent/js/background.js"></script>
+    <script src="./assent/js/barra.js"></script>
+    <script src="./assent/js/base.js"></script>
+    <script src="./assent/js/buscador.js"></script>
+    <script src="./assent/js/pas.min.js"></script>
+    <script src="./assent/js/tablas.js"></script>
+    <script src="./assent/js/Tiempo.js"></script>
+    <script src="./assent/js/notificaciones.js"></script>
+    <script src="./assent/js/main.js" type="module"></script>
+</body>
+
+</html>
